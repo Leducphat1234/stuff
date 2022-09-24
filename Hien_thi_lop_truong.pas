@@ -5,6 +5,17 @@ var monitor_name: string;
     filelop: text;
     check: string;
     dir: string;
+procedure write_and_save_monitor_name;
+begin
+    write('Nhap ten ban lop truong lop ban: ');
+    readln(monitor_name);
+    Assign(filelop, dir + '\lop_truong\lop_truong_cua_' + lop + '.txt');
+    Rewrite(filelop);
+    writeln(filelop, monitor_name);
+    close(filelop);
+    writeln('Ban lop truong lop ban la ', monitor_name);
+    delay(3000);
+end;
 
 begin
     ClrScr;
@@ -30,14 +41,7 @@ begin
 
     if not FileExists(dir + '\lop_truong\lop_truong_cua_' + lop + '.txt') then
     begin
-        write('Nhap ten ban lop truong lop ban: ');
-        readln(monitor_name);
-        Assign(filelop, dir + '\lop_truong\lop_truong_cua_' + lop + '.txt');
-        Rewrite(filelop);
-        writeln(filelop, monitor_name);
-        close(filelop);
-        writeln('Ban lop truong lop ban la ', monitor_name);
-        delay(3000);
+        write_and_save_monitor_name;
     end
     else
     begin
@@ -58,13 +62,7 @@ begin
         end
         else if check = 'n' then
         begin
-            write('Nhap ten ban lop truong lop ban: ');
-            readln(monitor_name);
-            Assign(filelop, dir + '\lop_truong\lop_truong_cua_' + lop + '.txt');
-            Rewrite(filelop);
-            writeln(filelop, monitor_name);
-            close(filelop);
-            writeln('Ban lop truong lop ban la ', monitor_name);
+            write_and_save_monitor_name;
         end;
     close(filelop);
     end;
