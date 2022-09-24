@@ -28,7 +28,7 @@ begin
         end;
     end;
     case lop[3] of
-        '1' .. '7': {do nothing};
+        '1' .. '8': {do nothing};
         else
         begin
             writeln('Ban nhap lop khong dung!');
