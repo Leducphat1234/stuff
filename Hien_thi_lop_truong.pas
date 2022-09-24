@@ -5,7 +5,7 @@ var monitor_name: string;
     filelop: text;
     check: string;
     dir: string;
-procedure write_and_save_monitor_name;
+procedure write_and_save_monitor_name(dir: string);
 begin
     write('Nhap ten ban lop truong lop ban: ');
     readln(monitor_name);
@@ -41,7 +41,7 @@ begin
 
     if not FileExists(dir + '\lop_truong\lop_truong_cua_' + lop + '.txt') then
     begin
-        write_and_save_monitor_name;
+        write_and_save_monitor_name(dir);
     end
     else
     begin
@@ -62,7 +62,7 @@ begin
         end
         else if check = 'n' then
         begin
-            write_and_save_monitor_name;
+            write_and_save_monitor_name(dir);
         end;
     close(filelop);
     end;
