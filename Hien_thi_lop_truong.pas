@@ -5,10 +5,17 @@ var monitor_name: string;
     filelop: text;
     check: string;
     dir: string;
+    filename: string;
 
 begin
     ClrScr;
-    dir:= 'C:\FPC\3.2.2\bin\i386-win32';
+    dir:= 'F:\ProgramingProject\Pascal';
+    if not directoryExists(dir + '\lop_truong') then
+        if not createDir(dir + '\lop_truong') then
+        begin
+            writeln('An error occurred when create a folder');
+            exit;
+        end;
     write('Nhap lop cua ban (6a4, 7a7, 8a5, 9a3, ...): ');
     readln(lop);
     case lop[1] of
@@ -16,6 +23,7 @@ begin
         else
         begin
             writeln('Ban nhap lop khong dung!');
+            delay(3000);
             exit;
         end;
     end;
@@ -24,15 +32,16 @@ begin
         else
         begin
             writeln('Ban nhap lop khong dung!');
+            delay(3000);
             exit;
         end;
     end;
-
-    if not FileExists(dir + '\lop_truong\lop_truong_cua_' + lop + '.txt') then
+    filename:= dir + '\lop_truong\lop_truong_cua_' + lop + '.txt';
+    if not FileExists(filename) then
     begin
         write('Nhap ten ban lop truong lop ban: ');
         readln(monitor_name);
-        Assign(filelop, dir + '\lop_truong\lop_truong_cua_' + lop + '.txt');
+        Assign(filelop, filename);
         Rewrite(filelop);
         writeln(filelop, monitor_name);
         close(filelop);
@@ -41,7 +50,7 @@ begin
     end
     else
     begin
-        Assign(filelop, dir + '\lop_truong\lop_truong_cua_' + lop + '.txt');
+        Assign(filelop, filename);
         Reset(filelop);
         readln(filelop, monitor_name);
         writeln('Ban lop truong lop ban ten la ', monitor_name);
@@ -60,7 +69,7 @@ begin
         begin
             write('Nhap ten ban lop truong lop ban: ');
             readln(monitor_name);
-            Assign(filelop, dir + '\lop_truong\lop_truong_cua_' + lop + '.txt');
+            Assign(filelop, filename);
             Rewrite(filelop);
             writeln(filelop, monitor_name);
             close(filelop);
