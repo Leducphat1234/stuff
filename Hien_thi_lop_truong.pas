@@ -9,7 +9,7 @@ var monitor_name: string;
 
 begin
     ClrScr;
-    dir:= 'F:\ProgramingProject\Pascal';
+    dir:= 'C:\FPC\3.2.2\bin\i386-win32';
     if not directoryExists(dir + '\lop_truong') then
         if not createDir(dir + '\lop_truong') then
         begin
