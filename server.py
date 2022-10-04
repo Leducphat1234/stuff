@@ -27,7 +27,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 while command == "":
                     command = input("Command: ")
                 conn.send(command.encode())
-                conn.send(command.encode())
                 try:
                     returns = conn.recv(2048).decode('utf-8')
                     print(returns)
